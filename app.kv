@@ -1,0 +1,281 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<HoverButton>:
+<DataCarousel>:
+
+<TextInput>:
+    write_tab: False
+    background_color: 0.114,0.125,0.133,1
+    cursor_color: 1,1,1,1
+    font_name: 'normal'
+    foreground_color: 1,1,1,1
+
+sm:
+    transition: NoTransition()
+    MainMenu:
+    BeforeStreaming:
+    Streaming:
+    DataDisplay:
+
+
+<MainMenu>
+    name: 'main_menu'
+    canvas.before:
+        Color:
+            rgba: (0.137,0.153,0.165,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    GridLayout:
+        size: root.width, root.height
+        rows:2 
+        cols:1
+        row_force_default: True
+        row_default_height: root.height/2.75
+
+        GridLayout:
+            rows:1
+            cols:2
+            FloatLayout:
+                Label:
+                    text: 'Sentiment \nMiner'
+                    font_name: 'Title'
+                    size: self.texture_size
+                    font_size: root.width/25 + root.height/45
+                    max_lines: 2
+                    line_height: 1.3
+                    pos_hint: {"center_x":0.6, "center_y":0.5}
+
+            Image:
+                source: 'TSLogo.png'
+                size_hint: 1,1
+
+        GridLayout:
+            rows:2
+            cols: 2
+            canvas.before:
+                Color:
+                    rgba: (0.114,0.125,0.133,1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: " Collect Data"
+                font_name:'Header'
+                size: self.texture_size
+                font_size: root.width/50+root.height/50
+                color: 0.6, 0.667, 0.71,1
+
+            Label:
+                text: "Analyze Data" 
+                font_name:'Header'
+                size: self.texture_size
+                font_size: root.width/50+root.height/50
+                color: 0.6, 0.667, 0.71,1
+
+            FloatLayout:
+                HoverButton:
+                    background_normal: 'collect.png'
+                    background_down: 'collect2.png'
+                    size_hint: None, None
+                    size : (root.width/9+root.height/5, root.width/9+root.height/5)
+                    pos_hint: {"center_x":0.5, "center_y":0}
+                    on_release: 
+                        app.root.current = 'before_streaming'
+
+            FloatLayout:
+                HoverButton:
+                    background_normal: 'data.png'
+                    background_down: 'data2.png'
+                    size_hint: None, None
+                    size : (root.width/9+root.height/5, root.width/9+root.height/5)
+                    pos_hint: {"center_x":0.5, "center_y":0}
+                    on_release: 
+                        app.root.current = 'data_display'
+
+
+<BeforeStreaming>:
+    name : 'before_streaming'
+    searchFilter: searchFilter
+    status: status
+
+    canvas.before:
+        Color:
+            rgba: (0.114,0.125,0.133,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas:
+        Color:
+            rgba: (0.137,0.153,0.165,1)
+        RoundedRectangle:
+            radius:20,20,20,20
+            pos: (root.width*0.08, root.height*0.12)
+            size: (root.width-(root.width*0.16), root.height-(root.height*0.24))
+    
+    FloatLayout:
+        Label:
+            text: "Before streaming tweets"
+            font_name: "Title"
+            font_size: 14 + root.width/40
+            text_size: root.width, None
+            size: self.texture_size
+            pos_hint: {"x": 0.12, "y":0.2 }
+        Label:
+            text: "add some custom filter to get your desired dataset!"
+            font_name: "Header"
+            font_size: 8 + root.width/80
+            text_size: root.width, None
+            size: self.texture_size
+            pos_hint: {"x": 0.12, "y":0.14}
+            color: 0.6, 0.667, 0.71,1
+        Label:
+            text: "Keyword Filter"
+            font_name: "normal"
+            font_size: 10 + root.width/100
+            text_size: root.width, None
+            size: self.texture_size
+            pos_hint: {"x": 0.12, "y": 0.03}
+            color: 0.6, 0.667, 0.71,1
+        TextInput:
+            id: searchFilter
+            hint_text: "ex. #COVID20, vaccine, @elonmusk, virus, www.who.int"
+            font_size: self.width/40+self.height/10
+            size_hint: 0.5,0.06
+            pos_hint: {"x": 0.12, "y": 0.43}
+            multiline: False
+
+        HoverButton:
+            background_normal: 'arrow1.png'
+            background_down: 'arrow2.png'
+            size_hint: None, None
+            size: root.width/12 + root.height/12, root.width/14 + root.height/14
+            pos_hint: {"x": 0.09, "y": 0.15}
+            on_release: 
+                app.root.current = 'main_menu'
+
+        HoverButton:
+            background_normal: 'start_streaming1.png'
+            background_down: 'start_streaming2.png'
+            size_hint: None, None
+            size: root.width/5 + root.height/5, root.width/25 + root.height/25
+            pos_hint: {'x': 0.25, 'y':0.20}
+            on_release:
+                root.start_stream()
+
+        Image:
+            source: 'miner.png'
+            size_hint: 0.35,0.35
+            pos_hint: {'x': 0.6,'y':0.3}
+
+        Label:
+            id: status
+            text: 'Authentication: None'
+            text_size: root.width, None
+            size: self.texture_size
+            font_size: 14
+            font_family: "normal"
+            pos_hint: {'x': 0.7, 'y':-0.26}
+            color: 0.6, 0.667, 0.71,1
+
+
+<AuthPopup>:
+    authPin: authPin
+
+    TextInput:
+        id : authPin
+        size_hint: 0.6,0.3
+        pos_hint: {'x':0.2, 'y':0.5}
+        font_size: 25
+        font_name: "Header"
+        focus: True
+        input_filter: 'int'
+        multiline : False
+        on_text_validate: 
+            app.root.current_screen.set_auth(authPin.text)
+            app.root.current_screen.change_authStatus()
+            app.root.current_screen.close()
+
+
+<Streaming>:
+    name: 'streaming'
+    numTweet: numTweet
+
+    canvas.before:
+        Color:
+            rgba: (0.114,0.125,0.133,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas:
+        Color:
+            rgba: (0.137,0.153,0.165,1)
+        RoundedRectangle:
+            radius:20,20,20,20
+            pos: (root.width*0.08, root.height*0.12)
+            size: (root.width-(root.width*0.16), root.height-(root.height*0.24))
+    
+    FloatLayout:
+        Label:
+            text: 'Streaming . . .'
+            font_name: 'Title'
+            size: self.texture_size
+            font_size: root.width/15 + root.height/35
+            pos_hint: {'x':0, 'y':0.1}
+
+        Label:
+            id: numTweet
+            text: '0 tweets collected'
+            font_name: 'normal'
+            size: self.texture_size
+            font_size: root.width/50 + root.height/75
+            color: 0.6, 0.667, 0.71,1
+
+        Button:
+            text: 'Stop Stream'
+            font_name: 'normal'
+            font_size: root.width/90 + root.height/120
+            pos_hint: {'center_x': 0.5, 'center_y':0.25}
+            size_hint: 0.1,0.06
+            background_color: [0.918,0.29,0.21,1]
+            on_release: app.root.current = 'main_menu'
+
+
+<DataDisplay>:
+    name: 'data_display'
+    canvas.before:
+        Color:
+            rgba: (0.137,0.153,0.165,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Sentiment Data'
+            font_name: 'Title'
+            size: self.texture_size
+            font_size: root.width/15 + root.height/35
+
+        DataCarousel:
+            AsyncImage:
+                source: 'TSLogo.png'
+            AsyncImage:
+                source: 'miner.png'
+            AsyncImage:
+                source: 'data.png'
+        
+        Label:
+            text: '<---  scroll  --->'
+            font_name: 'normal'
+            size: self.texture_size
+        
+        HoverButton:
+            background_normal: 'arrow1.png'
+            background_down: 'arrow2.png'
+            on_release: 
+                app.root.current = 'main_menu'
+
