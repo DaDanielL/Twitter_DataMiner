@@ -1,4 +1,4 @@
-#!C:\Users\Daniel Lin\Desktop\TS_GUI\venv\Scripts\python.exe
+#!c:\users\daniel lin\desktop\github\ts_gui\venv\scripts\python.exe
 
 # Author:
 # Contact: grubert@users.sf.net
