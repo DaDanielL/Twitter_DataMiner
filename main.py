@@ -190,9 +190,9 @@ class TSApp(App):
 
 
 if __name__ == '__main__':
-    LabelBase.register(name='Title', fn_regular="Uni Sans Heavy.ttf")
-    LabelBase.register(name='Header', fn_regular="PontanoSans-Regular.ttf")
-    LabelBase.register(name='normal', fn_regular="WhitneyBold.ttf")
+    LabelBase.register(name='Title', fn_regular="font/Uni Sans Heavy.ttf")
+    LabelBase.register(name='Header', fn_regular="font/PontanoSans-Regular.ttf")
+    LabelBase.register(name='normal', fn_regular="font/WhitneyBold.ttf")
 
     Factory.register('HoverBehavior', HoverBehavior)
 

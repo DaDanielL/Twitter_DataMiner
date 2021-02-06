@@ -48,7 +48,7 @@ sm:
                     pos_hint: {"center_x":0.6, "center_y":0.5}
 
             Image:
-                source: 'TSLogo.png'
+                source: 'img\TSLogo.png'
                 size_hint: 1,1
 
         GridLayout:
@@ -77,8 +77,8 @@ sm:
 
             FloatLayout:
                 HoverButton:
-                    background_normal: 'collect.png'
-                    background_down: 'collect2.png'
+                    background_normal: 'img\collect.png'
+                    background_down: 'img\collect2.png'
                     size_hint: None, None
                     size : (root.width/9+root.height/5, root.width/9+root.height/5)
                     pos_hint: {"center_x":0.5, "center_y":0}
@@ -87,8 +87,8 @@ sm:
 
             FloatLayout:
                 HoverButton:
-                    background_normal: 'data.png'
-                    background_down: 'data2.png'
+                    background_normal: 'img\data.png'
+                    background_down: 'img\data2.png'
                     size_hint: None, None
                     size : (root.width/9+root.height/5, root.width/9+root.height/5)
                     pos_hint: {"center_x":0.5, "center_y":0}
@@ -148,8 +148,8 @@ sm:
             multiline: False
 
         HoverButton:
-            background_normal: 'arrow1.png'
-            background_down: 'arrow2.png'
+            background_normal: 'img/arrow1.png'
+            background_down: 'img/arrow2.png'
             size_hint: None, None
             size: root.width/12 + root.height/12, root.width/14 + root.height/14
             pos_hint: {"x": 0.09, "y": 0.15}
@@ -157,8 +157,8 @@ sm:
                 app.root.current = 'main_menu'
 
         HoverButton:
-            background_normal: 'start_streaming1.png'
-            background_down: 'start_streaming2.png'
+            background_normal: 'img\start_streaming1.png'
+            background_down: 'img\start_streaming2.png'
             size_hint: None, None
             size: root.width/5 + root.height/5, root.width/25 + root.height/25
             pos_hint: {'x': 0.25, 'y':0.20}
@@ -166,7 +166,7 @@ sm:
                 root.start_stream()
 
         Image:
-            source: 'miner.png'
+            source: 'img\miner.png'
             size_hint: 0.35,0.35
             pos_hint: {'x': 0.6,'y':0.3}
 
@@ -262,11 +262,11 @@ sm:
 
         DataCarousel:
             AsyncImage:
-                source: 'TSLogo.png'
+                source: 'img\TSLogo.png'
             AsyncImage:
-                source: 'miner.png'
+                source: 'img\miner.png'
             AsyncImage:
-                source: 'data.png'
+                source: 'img\data.png'
         
         Label:
             text: '<---  scroll  --->'
@@ -274,8 +274,8 @@ sm:
             size: self.texture_size
         
         HoverButton:
-            background_normal: 'arrow1.png'
-            background_down: 'arrow2.png'
+            background_normal: 'img/arrow1.png'
+            background_down: 'img/arrow2.png'
             on_release: 
                 app.root.current = 'main_menu'
 
