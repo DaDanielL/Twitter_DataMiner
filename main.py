@@ -118,7 +118,7 @@ class BeforeStreaming(Screen):
         content = AuthPopup()
         self.popup = Popup(title='Authentication', content=content, 
                    size_hint=(None,None),size=(300,200), 
-                   title_font='WhitneyBold.ttf')
+                   title_font='font/WhitneyBold.ttf')
         self.popup.open()
 
 
