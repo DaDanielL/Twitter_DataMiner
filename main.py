@@ -178,9 +178,11 @@ class DataDisplay(Screen):
 
 class TSApp(App):
     def on_stop(self):
+        f = open('data/tweets.json','r+')
+        f.seek(0)
+        #f.truncate()
         try:
             Twitter.start_stream(False)
-            os.remove('tweets.json')
         except: 
             pass
 

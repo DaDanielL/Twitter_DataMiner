@@ -9,7 +9,7 @@ from tweepy.streaming import StreamListener
 class TweetStream(StreamListener):
     def on_data(self, data):
         try:
-            with open('tweets.json', 'a') as file:
+            with open('data/tweets.json', 'a') as file:
                 file.write(data)
             Twitter.count_tweet()
 
