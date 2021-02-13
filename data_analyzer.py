@@ -33,8 +33,8 @@ class DataAnalyzer():
             except:
                 pass
         
-        self.df = pd.DataFrame(data=data)
-    
+        print(self.df)
+
 
     def sentiment_analysis(self):
         self.df['cleaned_tweet'] = self.df['tweet'].apply(self.cleanText)
@@ -55,8 +55,6 @@ class DataAnalyzer():
         self.df['polarity'] = self.df['cleaned_tweet'].apply(getPolarity)
         self.df['evaluation'] = self.df['polarity'].apply(getEval)
         
-        
-    
 
     def cleanText(self,text):
         text = re.sub(r'@[A-Za-z0-9_]+', '', text) # removes @ mentions
@@ -66,4 +64,12 @@ class DataAnalyzer():
         text = re.sub(r'\:','',text)
 
         return text
+
+    
+    def getKeyword(self,text):
+        for item in self.kw:
+            if item in text:
+                return item
+        return 'None'
+        
     

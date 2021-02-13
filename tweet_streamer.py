@@ -1,5 +1,6 @@
 import os
 import webbrowser
+import json
 
 import tweepy
 from tweepy import OAuthHandler, Stream
@@ -47,6 +48,11 @@ class StreamHandler():
 
 
     def start_stream(self, b, search=['the','a','is','are','I','you','what','how','he','she','they','it']):
+
+        with open('data/tweets.json','w') as f:
+            json_str = json.dumps(search)
+            f.seek(1)
+            f.write(json_str)
 
         if b == True:
             self.TweetStreamer = Stream(self.auth, TweetStream())

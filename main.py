@@ -15,16 +15,21 @@ from kivy.properties import ObjectProperty
 from kivy.animation import Animation
 from kivy.uix.carousel import Carousel
 from kivy.config import Config
-
+from kivy.uix.scrollview import ScrollView
 
 import time
 import webbrowser
 import os
 import pandas as pd 
 
-
 from tweet_streamer import Twitter
 from data_analyzer import DataAnalyzer
+
+
+class DataPanel(ScrollView):
+    def __init__(self, **kwargs):
+        super(DataPanel, self).__init__(**kwargs)
+        self.size_hint = (1, 0.75)
 
 
 class HoverBehavior(object):
@@ -126,16 +131,15 @@ class BeforeStreaming(Screen):
 
 
     def start_stream(self):
-
         try:
             if self.validAuth == False:
                 self.get_auth()
             else: 
-                searchList = self.searchFilter.text.split(',')
-                if searchList == ['']:
+                kw = self.searchFilter.text.split(',')
+                if kw == ['']:
                     Twitter.start_stream(True)
                 else:
-                    Twitter.start_stream(True, searchList)
+                    Twitter.start_stream(True, kw)
                 self.manager.current = 'streaming'
 
         except AttributeError:
@@ -192,6 +196,8 @@ if __name__ == '__main__':
     LabelBase.register(name='Title', fn_regular="font/Uni Sans Heavy.ttf")
     LabelBase.register(name='Header', fn_regular="font/PontanoSans-Regular.ttf")
     LabelBase.register(name='normal', fn_regular="font/WhitneyBold.ttf")
+
+    Config.set('input', 'mouse', 'mouse,disable_multitouch')
 
     Factory.register('HoverBehavior', HoverBehavior)
     

@@ -1,6 +1,7 @@
 #:import NoTransition kivy.uix.screenmanager.NoTransition
 
 <HoverButton>:
+<DataPanel>:
 
 <TextInput>:
     write_tab: False
@@ -268,12 +269,31 @@ sm:
             line_height: 1.3
             pos_hint: {"center_x":0.18, "center_y":0.86}
 
-        HoverButton:
-            background_normal: 'img/arrow1.png'
-            background_down: 'img/arrow2.png'
-            size_hint: None, None
-            size: root.width/12 + root.height/20, root.width/15 + root.height/20
-            on_release: 
-                app.root.current = 'main_menu'
+        DataPanel:
+            do_scroll_y: True
+            do_scroll_x: False
+            scroll_wheel_distance: 100
 
+            Label:
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                padding: 10, 10
+                text: 'really some amazing text\n'*100
+
+        FloatLayout:
+            canvas:
+                Color:
+                    rgba: (0.137,0.153,0.165,1)
+                Rectangle:
+                    pos: (0, 0)
+                    size: (root.width, root.height/7)
+
+            HoverButton:
+                background_normal: 'img/arrow1.png'
+                background_down: 'img/arrow2.png'
+                size_hint: None, None
+                size: root.width/7, root.height/6
+                on_release: 
+                    app.root.current = 'main_menu'
 
