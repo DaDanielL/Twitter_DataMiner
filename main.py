@@ -14,12 +14,17 @@ from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivy.animation import Animation
 from kivy.uix.carousel import Carousel
+from kivy.config import Config
+
 
 import time
 import webbrowser
 import os
+import pandas as pd 
+
 
 from tweet_streamer import Twitter
+from data_analyzer import DataAnalyzer
 
 
 class HoverBehavior(object):
@@ -65,21 +70,7 @@ class HoverBehavior(object):
 
     def on_leave(self):
         pass
-
-
-class DataCarousel(Carousel):
-
-    def __init__(self, **kwargs):
-        super(DataCarousel, self).__init__(**kwargs)
-        self.direction = 'right'
-        self.loop = True
-        self.anim_move_duration = 0.7
-        self.min_move = 0.2
-        
-        Clock.schedule_interval(self.load_next, 5)
     
-
-
 class HoverButton(Button,HoverBehavior):
     
     def on_enter(self, *arg):
@@ -173,7 +164,13 @@ class Streaming(Screen):
 
 
 class DataDisplay(Screen):
-    pass
+    def on_pre_enter(self):
+        self.Dm = DataAnalyzer('data/tweets.json')
+        self.Dm.create_dataframe()
+    
+    def on_enter(self):
+        self.Dm.sentiment_analysis()
+        #analyze data and show graph
 
 
 class TSApp(App):
@@ -197,5 +194,6 @@ if __name__ == '__main__':
     LabelBase.register(name='normal', fn_regular="font/WhitneyBold.ttf")
 
     Factory.register('HoverBehavior', HoverBehavior)
-
+    
     TSApp().run()
+

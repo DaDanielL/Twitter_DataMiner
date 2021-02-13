@@ -7,6 +7,7 @@ from tweepy.streaming import StreamListener
 
 
 class TweetStream(StreamListener):
+
     def on_data(self, data):
         try:
             with open('data/tweets.json', 'a') as file:
