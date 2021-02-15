@@ -274,12 +274,29 @@ sm:
             do_scroll_x: False
             scroll_wheel_distance: 100
 
-            Label:
+            GridLayout:
+                cols: 2
                 size_hint_y: None
-                height: self.texture_size[1]
-                text_size: self.width, None
-                padding: 10, 10
-                text: 'really some amazing text\n'*100
+                size: self.minimum_size
+
+                Image:
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    source: 'graphs/neg.png'
+                Image:
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    source: 'graphs/pos.png'
+                Image:
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    source: 'graphs/pie.png'
+                Image:
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    source: 'graphs/line.png'
+
+
 
         FloatLayout:
             canvas:

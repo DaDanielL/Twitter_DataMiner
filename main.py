@@ -174,7 +174,7 @@ class DataDisplay(Screen):
     
     def on_enter(self):
         self.Dm.sentiment_analysis()
-        #analyze data and show graph
+        self.Dm.create_graphs()
 
 
 class TSApp(App):
