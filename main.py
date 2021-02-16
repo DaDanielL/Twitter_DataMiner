@@ -1,11 +1,13 @@
 #import kivy
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.floatlayout import FloatLayout
-from kivy.properties import BooleanProperty, ObjectProperty
+from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import BooleanProperty, ObjectProperty, ListProperty
 from kivy.core.window import Window
 from kivy.factory import Factory
 from kivy.clock import Clock
@@ -24,6 +26,7 @@ import pandas as pd
 
 from tweet_streamer import Twitter
 from data_analyzer import DataAnalyzer
+
 
 
 class DataPanel(ScrollView):
@@ -76,6 +79,7 @@ class HoverBehavior(object):
     def on_leave(self):
         pass
     
+
 class HoverButton(Button,HoverBehavior):
     
     def on_enter(self, *arg):
@@ -171,10 +175,17 @@ class DataDisplay(Screen):
     def on_pre_enter(self):
         self.Dm = DataAnalyzer('data/tweets.json')
         self.Dm.create_dataframe()
+        self.Dm.sentiment_analysis()
+        self.Dm.create_csv()
     
     def on_enter(self):
-        self.Dm.sentiment_analysis()
         self.Dm.create_graphs()
+
+        with open('data/tweets.csv', 'r', encoding='utf-8') as f:
+            l = 0
+            for row in f:
+                l+=1
+            print(l)
 
 
 class TSApp(App):

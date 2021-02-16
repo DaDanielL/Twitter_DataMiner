@@ -5,9 +5,11 @@ import re
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
+from matplotlib import cm
 from PIL import Image
 import numpy as np
 import seaborn as sns
+from scipy.interpolate import make_interp_spline, BSpline
 
 class DataAnalyzer():
 
@@ -71,6 +73,7 @@ class DataAnalyzer():
 
         return text
 
+
     def create_graphs(self):
         #wordcloud
         self.create_wc()
@@ -78,6 +81,7 @@ class DataAnalyzer():
         self.create_pie()
         #timechart    
         self.create_line()
+
 
     def create_wc(self):
         posdf = self.df[self.df.polarity > 0]
@@ -130,42 +134,52 @@ class DataAnalyzer():
         plt.savefig('graphs/pie.png',transparent=True)
         plt.clf()
 
-    
+
     def create_line(self):
-        sns.set(style='darkgrid',)
+        sns.set(style='darkgrid',palette='pastel')
+
+        # aggregating data
         full_data = self.df['polarity']
-        num_points = 200
+        num_points = 75
         n = int(len(full_data)/num_points)
-
-        all_time = self.df['created_at']
-        start = all_time[0].split()
-        middle = all_time[len(all_time)//2].split()
-        end = all_time[len(all_time)-1].split()
-
         data = []
 
         for i in range(num_points):
             x = full_data[i*n:(i+1)*n]
             data.append(sum(x)/n)
 
-        ax = sns.lineplot(data=data)
-        ax.set_xticks([0,num_points/2, num_points])
+        # find start and end time for the x labels
+        all_time = self.df['created_at']
+        start = all_time[0].split()
+        end = all_time[len(all_time)-1].split()
+
+        # smoothing out graph
+        x = np.arange(0,len(data))
+        y = data
+
+        spl = make_interp_spline(x,y)
+
+        xnew = np.linspace(x.min(),x.max(),len(data)*250)
+        ynew = spl(xnew)
+
+        # graphing
+        ax = sns.scatterplot(x= xnew, y= ynew, c=cm.RdYlGn(ynew+0.5), edgecolor='none')
+        ax.set_xticks([0, len(data)/4, len(data)/2, 3*len(data)/4,len(data)])
         ax.set_xticklabels([f'{start[1]} {start[2]} {start[5]} at {start[3]}',
-                            f'{middle[1]} {middle[2]} {middle[5]} at {middle[3]}',
+                            ' ', ' ',' ',
                             f'{end[1]} {end[2]} {end[5]} at {end[3]}'])
         ax.tick_params(axis='x', colors="white")
-
-        ax.set_ylabel = 'Sentiment Value'
         ax.tick_params(axis='y', colors="white")
-        plt.ylim(-1,1)
+        ax.yaxis.label.set_color('white')
+        ax.title.set_color('white')
 
-        plt.axhline(y=0, color = '#808080', linestyle=':', linewidth=4)
+        plt.ylim(-1,1)
+        plt.ylabel('Sentiment Value')
+        plt.title('Sentiment Trend')
+        plt.axhline(y=0, color = '#b3b3b3', linestyle='dashdot', linewidth=5)
         plt.savefig('graphs/line.png', transparent=True)
 
-
-
-Dm = DataAnalyzer('data/tweets.json')
-Dm.create_dataframe()
-Dm.sentiment_analysis()
-Dm.create_graphs()
     
+    def create_csv(self):
+        newdf = self.df[['tweet','polarity','evaluation']]
+        newdf.to_csv('data/tweets.csv')

@@ -2,6 +2,7 @@
 
 <HoverButton>:
 <DataPanel>:
+<DataTable>:
 
 <TextInput>:
     write_tab: False
@@ -275,42 +276,34 @@ sm:
             scroll_wheel_distance: 100
 
             GridLayout:
-                cols: 2
+                cols: 1
                 size_hint_y: None
                 size: self.minimum_size
 
-                Image:
+                AsyncImage:
                     size_hint_y: None
                     height: self.texture_size[1]
                     source: 'graphs/neg.png'
-                Image:
+                AsyncImage:
                     size_hint_y: None
                     height: self.texture_size[1]
                     source: 'graphs/pos.png'
-                Image:
+                AsyncImage:
                     size_hint_y: None
                     height: self.texture_size[1]
                     source: 'graphs/pie.png'
-                Image:
+                AsyncImage:
                     size_hint_y: None
                     height: self.texture_size[1]
                     source: 'graphs/line.png'
+                
 
+        HoverButton:
+            background_normal: 'img/arrow1.png'
+            background_down: 'img/arrow2.png'
+            size_hint: None, None
+            size: root.width/8, root.height/6
+            on_release: 
+                app.root.current = 'main_menu'
 
-
-        FloatLayout:
-            canvas:
-                Color:
-                    rgba: (0.137,0.153,0.165,1)
-                Rectangle:
-                    pos: (0, 0)
-                    size: (root.width, root.height/7)
-
-            HoverButton:
-                background_normal: 'img/arrow1.png'
-                background_down: 'img/arrow2.png'
-                size_hint: None, None
-                size: root.width/7, root.height/6
-                on_release: 
-                    app.root.current = 'main_menu'
 
