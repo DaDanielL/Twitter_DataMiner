@@ -220,6 +220,7 @@ sm:
     
     FloatLayout:
         Label:
+            id: posii
             text: 'Streaming . . .'
             font_name: 'Title'
             size: self.texture_size
@@ -245,7 +246,13 @@ sm:
 
 
 <DataDisplay>:
+
     name: 'data_display'
+    pos_wc : pos_wc
+    neg_wc : neg_wc
+    pie_chart : pie_chart
+    line_chart : line_chart
+
     canvas.before:
         Color:
             rgba: (0.114,0.125,0.133,1)
@@ -280,22 +287,29 @@ sm:
                 size_hint_y: None
                 size: self.minimum_size
 
-                AsyncImage:
+                Image:
+                    id: pos_wc
                     size_hint_y: None
                     height: self.texture_size[1]
-                    source: 'graphs/neg.png'
-                AsyncImage:
+                    source: 'graphs/graphNotFound.png'
+
+                Image:
+                    id: neg_wc
                     size_hint_y: None
                     height: self.texture_size[1]
-                    source: 'graphs/pos.png'
-                AsyncImage:
+                    source: 'graphs/graphNotFound.png'
+
+                Image:
+                    id: pie_chart
                     size_hint_y: None
                     height: self.texture_size[1]
-                    source: 'graphs/pie.png'
-                AsyncImage:
+                    source: 'graphs/graphNotFound.png'
+
+                Image:
+                    id: line_chart
                     size_hint_y: None
                     height: self.texture_size[1]
-                    source: 'graphs/line.png'
+                    source: 'graphs/graphNotFound.png'
                 
 
         HoverButton:

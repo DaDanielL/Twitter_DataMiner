@@ -178,6 +178,7 @@ class DataAnalyzer():
         plt.title('Sentiment Trend')
         plt.axhline(y=0, color = '#b3b3b3', linestyle='dashdot', linewidth=5)
         plt.savefig('graphs/line.png', transparent=True)
+        plt.clf()
 
     
     def create_csv(self):

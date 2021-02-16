@@ -7,7 +7,7 @@ from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import BooleanProperty, ObjectProperty, ListProperty
+from kivy.properties import BooleanProperty, ObjectProperty
 from kivy.core.window import Window
 from kivy.factory import Factory
 from kivy.clock import Clock
@@ -156,6 +156,7 @@ class AuthPopup(FloatLayout):
 
 class Streaming(Screen):
     numTweet = ObjectProperty(None)
+    posii = ObjectProperty(None)
 
     def on_enter(self):
         self.event = Clock.schedule_interval(self.update_counter, 0.5)
@@ -170,30 +171,46 @@ class Streaming(Screen):
         Clock.unschedule(self.event)
         Twitter.start_stream(False)
 
-
-class DataDisplay(Screen):
-    def on_pre_enter(self):
         self.Dm = DataAnalyzer('data/tweets.json')
         self.Dm.create_dataframe()
         self.Dm.sentiment_analysis()
         self.Dm.create_csv()
-    
-    def on_enter(self):
         self.Dm.create_graphs()
 
-        with open('data/tweets.csv', 'r', encoding='utf-8') as f:
-            l = 0
-            for row in f:
-                l+=1
-            print(l)
+
+class DataDisplay(Screen):
+    pos_wc = ObjectProperty(None)
+    neg_wc = ObjectProperty(None)
+    pie_chart = ObjectProperty(None)
+    line_chart = ObjectProperty(None)
+
+    def on_enter(self):
+        if os.path.exists('graphs/pos.png'):
+            self.pos_wc.source = 'graphs/pos.png'
+        else:
+            self.pos_wc.source = 'graphs/graphNotFound.png'
+        if os.path.exists('graphs/neg.png'):
+            self.neg_wc.source = 'graphs/neg.png'
+        else:
+            self.neg_wc.source = 'graphs/graphNotFound.png'
+        if os.path.exists('graphs/pie.png'):
+            self.pie_chart.source = 'graphs/pie.png'
+        else:
+            self.pie_chart.source = 'graphs/graphNotFound.png'
+        if os.path.exists('graphs/line.png'):
+            self.line_chart.source = 'graphs/line.png'
+        else:
+            self.line_chart.source = 'graphs/graphNotFound.png'
+
+
 
 
 class TSApp(App):
     def on_stop(self):
-        f = open('data/tweets.json','r+')
-        f.seek(0)
-        #f.truncate()
         try:
+            f = open('data/tweets.json','r+')
+            f.seek(0)
+            f.truncate()
             Twitter.start_stream(False)
         except: 
             pass
