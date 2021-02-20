@@ -171,12 +171,6 @@ class Streaming(Screen):
         Clock.unschedule(self.event)
         Twitter.start_stream(False)
 
-        self.Dm = DataAnalyzer('data/tweets.json')
-        self.Dm.create_dataframe()
-        self.Dm.sentiment_analysis()
-        self.Dm.create_csv()
-        self.Dm.create_graphs()
-
 
 class DataDisplay(Screen):
     pos_wc = ObjectProperty(None)
@@ -184,24 +178,30 @@ class DataDisplay(Screen):
     pie_chart = ObjectProperty(None)
     line_chart = ObjectProperty(None)
 
+    def on_pre_enter(self):
+        try:
+            self.Dm = DataAnalyzer('data/tweets.json')
+            self.Dm.create_dataframe()
+            self.Dm.sentiment_analysis()
+            self.Dm.create_csv()
+            self.Dm.create_graphs()
+        except:
+            pass
+
+
     def on_enter(self):
         if os.path.exists('graphs/pos.png'):
             self.pos_wc.source = 'graphs/pos.png'
-        else:
-            self.pos_wc.source = 'graphs/graphNotFound.png'
+            self.pos_wc.reload()
         if os.path.exists('graphs/neg.png'):
             self.neg_wc.source = 'graphs/neg.png'
-        else:
-            self.neg_wc.source = 'graphs/graphNotFound.png'
+            self.neg_wc.reload()
         if os.path.exists('graphs/pie.png'):
             self.pie_chart.source = 'graphs/pie.png'
-        else:
-            self.pie_chart.source = 'graphs/graphNotFound.png'
+            self.pie_chart.reload()
         if os.path.exists('graphs/line.png'):
             self.line_chart.source = 'graphs/line.png'
-        else:
-            self.line_chart.source = 'graphs/graphNotFound.png'
-
+            self.line_chart.reload()
 
 
 
