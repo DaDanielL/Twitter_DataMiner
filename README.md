@@ -6,10 +6,14 @@
 
 Getting Started:
 
-1. [Link Install Python - URL](https://www.python.org/downloads/)
-2. Create a folder to store the files
-3. Single-click the address bar of the bar and type 'cmd' to access the command prompt
-4. 
+1. [Install Python](https://www.python.org/downloads/)
+2. [Install Git](https://git-scm.com/downloads)
+3. Create a folder to store the files
+4. Single-click the address bar of the folder in file explorer and type 'cmd' to access the command prompt
+5. 
+6. Create a virtual environment by typing in 'python -m venv venv'.
+7. Activate the virtual environment by typing in 'venv\Scripts\activate.bat'.
+8. 
 
 ---
 
