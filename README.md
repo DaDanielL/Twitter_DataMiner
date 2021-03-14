@@ -4,6 +4,15 @@
 
 ---
 
+Getting Started:
+
+1. [Link Install Python - URL](https://www.python.org/downloads/)
+2. Create a folder to store the files
+3. Single-click the address bar of the bar and type 'cmd' to access the command prompt
+4. 
+
+---
+
 How To Use:
 
 After running the program, you will be greeted by this screen:
