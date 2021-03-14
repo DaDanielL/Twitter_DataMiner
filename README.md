@@ -5,7 +5,7 @@
 ---
 
 Getting Started:
-
+'''diff
 1. [Install Python](https://www.python.org/downloads/)
 2. [Install Git](https://git-scm.com/downloads)
 3. Copy the link of the repository under the Code button
@@ -16,7 +16,7 @@ Getting Started:
 8. Activate the virtual environment by typing in   'venv\Scripts\activate.bat'.
 9. Install all the required packages by entering   'pip install -r requirements.txt'
 10. Lastly, enter   'python main.py'   to run the program.
-
+'''
 ---
 
 How To Use:
