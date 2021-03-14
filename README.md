@@ -3,15 +3,15 @@
 ### This GUI is made to allow its users to stream tweets from Twitter within a few steps and perform sentiment analysis on the tweets they collect
 
 ---
+'''diff
 
 Getting Started:
-'''diff
 1. [Install Python](https://www.python.org/downloads/)
 2. [Install Git](https://git-scm.com/downloads)
 3. Copy the link of the repository under the Code button
 4. Create a folder to store the files
 5. Single-click the address bar of the folder in file explorer and type 'cmd' to access the command prompt
-6. Clone the repository by typing in   **'git clone [insert the repository link you copied]'  **
+6. Clone the repository by typing in   - 'git clone [insert the repository link you copied]'  **
 7. Create a virtual environment by typing in   **'python -m venv venv'.**
 8. Activate the virtual environment by typing in   **'venv\Scripts\activate.bat'.**
 9. Install all the required packages by entering   **'pip install -r requirements.txt'**
