@@ -6,7 +6,7 @@
 
 Getting Started:
 1. [Install Python](https://www.python.org/downloads/)
-2. [Download Files](https://github.com/DaDanielL/Twitter_DataMiner/releases)
+2. [Download Source Code](https://github.com/DaDanielL/Twitter_DataMiner/releases)
 3. Single-click the address bar of the folder in file explorer and type 'cmd' to access the command prompt
 4. Install all the required packages by entering ```pip install -r requirements.txt```
 5. Lastly, enter ```python main.py``` to run the program.
