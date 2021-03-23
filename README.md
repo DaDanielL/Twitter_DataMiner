@@ -6,15 +6,10 @@
 
 Getting Started:
 1. [Install Python](https://www.python.org/downloads/)
-2. [Install Git](https://git-scm.com/downloads)
-3. Copy the link of the repository under the Code button from the Github repository.
-4. Create a folder to store the files
-5. Single-click the address bar of the folder in file explorer and type 'cmd' to access the command prompt
-6. Clone the repository by typing in ```git clone [insert the repository link you copied]```
-8. Create a virtual environment by typing in ```python -m venv venv```
-9. Activate the virtual environment by typing in ```venv\Scripts\activate.bat```
-10. Install all the required packages by entering ```pip install -r requirements.txt```
-11. Lastly, enter ```python main.py``` to run the program.
+2. [Download Files](https://github.com/DaDanielL/Twitter_DataMiner/releases)
+3. Single-click the address bar of the folder in file explorer and type 'cmd' to access the command prompt
+4. Install all the required packages by entering ```pip install -r requirements.txt```
+5. Lastly, enter ```python main.py``` to run the program.
 
 ---
 
