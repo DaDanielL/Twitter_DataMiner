@@ -10,6 +10,8 @@ Subjectivity (as the name implies) define how subjective a word is. A 0 stands f
 
 Intensity (a value ranging from 0 to 1) represents how much the word influences the other words around it. For example, 'not' has a intensity value of 1, a polarity value of -1 and can greatly reduce the polarity of neighboring words ('good' vs 'not good')
 
+[Dictionary](https://github.com/sloria/TextBlob/blob/dev/textblob/en/en-sentiment.xml)
+
 ---
 
 Getting Started:
