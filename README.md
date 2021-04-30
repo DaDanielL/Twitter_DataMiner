@@ -52,4 +52,9 @@ Upon stoping the stream, you will be returned to the main menu screen, where you
 you just collected :clap: :clap: !!
 
 ![Graphs 1](/demo/graphs1.PNG)
+
+The above are two wordclouds. The green wordcloud contains words with positive sentiments while the red wordcloud contains words with negative sentiment. The size of the words are determined by how often they are used in the set of tweets you collected.
+
 ![Graphs 2](/demo/graphs2.PNG)
+
+The above is a line graph shows the trend in sentiment throughout the period of time you streamed your tweets. Red stands for negative and green stands for positive sentiments.
