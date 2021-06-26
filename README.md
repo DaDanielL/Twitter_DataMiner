@@ -19,9 +19,10 @@ Getting Started:
 2. After clicking on the link, scroll down to 'Files' and select ```Windows x86-64 executable installer```
 3. In the python installer, make sure 'Add Python 3.7 to PATH' is checked, and choose customize intallation.
 4. In the Optional Features menu, make sure 'pip' is checked.
-5. [Download Source Code (zip)](https://github.com/DaDanielL/Twitter_DataMiner/releases)
-6. Extract the folder from the zip file
-7. Single click the address bar of the extracted folder in the file explorer and enter ```cmd``` to access the command prompt
+5. Finish the installation.
+6. [Download Source Code (zip)](https://github.com/DaDanielL/Twitter_DataMiner/releases)
+7. Extract the folder from the zip file
+8. Single click the address bar of the extracted folder in the file explorer and enter ```cmd``` to access the command prompt
 
 ![Guide](/demo/Animation.gif)
 
