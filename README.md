@@ -43,7 +43,7 @@ To stream tweets, click the icon underneath 'Collect Data' and you will come acr
 
 Enter any keywords in the 'Keyword Filter' box. You will only collect tweets that contain any of the keywords you enter. Keywords may come in the forms of words, hashtags, url, @mentions, and more.
 
-After entering your keywords and clicking the 'Start Stream' button, you will be asked to authorize the application with your Twitter account. In order to authorize the application, follow the instruction on the newly opened tab and enter the code here:
+After entering your keywords and clicking the 'Start Stream' button, you will be asked to authorize the application with your Twitter account. In order to authorize the application, follow the instruction on the newly opened tab and input the code here and press enter afterwards:
 
 ![Auth](/demo/authensc.PNG)
 
@@ -53,12 +53,14 @@ If the authentication is successful, you will see the following at the bottom ri
 
 After successfully authorizing the application, you can finally start streaming tweets :clap: :clap: !!
 
+The tweets collected during your stream are the tweets being tweeted at the moment. (suggested tweet amount 2000).
+
 ![Stream Screen 2](/demo/streamsc2.PNG)
 
-Upon stoping the stream, you will be returned to the main menu screen, where you can click on 'Analyze Data' to view the sentiment data of the tweets
+Upon clicking stop stream, you will be returned to the main menu screen, where you can click on 'Analyze Data' to view the sentiment data of the tweets
 you just collected :clap: :clap: !!
 
-Navigate to the program folder, click on the data folder to access the csv (excel sheet) of specific tweets and their assigned values
+* Navigate to the program folder, click on the data folder to access the csv (excel sheet) of specific tweets and their assigned values
 
 ![Graphs 1](/demo/graphs1.PNG)
 
