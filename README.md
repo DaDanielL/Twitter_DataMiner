@@ -37,7 +37,7 @@ After running the program, you will be greeted by this screen:
 
 ![Main Screen](/demo/mainsc.PNG)
 
-To stream tweets, click the circle underneath 'Collect Data' and you will come across this screen:
+To stream tweets, click the icon underneath 'Collect Data' and you will come across this screen:
 
 ![Stream Screen 1](/demo/streamsc1.PNG)
 
