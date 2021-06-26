@@ -56,6 +56,8 @@ After successfully authorizing the application, you can finally start streaming 
 Upon stoping the stream, you will be returned to the main menu screen, where you can click on 'Analyze Data' to view the sentiment data of the tweets
 you just collected :clap: :clap: !!
 
+Navigate to the program folder, click on the data folder to access the csv (excel sheet) of specific tweets and their assigned values
+
 ![Graphs 1](/demo/graphs1.PNG)
 
 The above are two wordclouds. The green wordcloud contains words with positive sentiments while the red wordcloud contains words with negative sentiment. The size of the words are determined by how often they are used in the set of tweets you collected.
