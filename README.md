@@ -19,8 +19,8 @@ Getting Started:
 2. [Download Source Code (zip)](https://github.com/DaDanielL/Twitter_DataMiner/releases)
 3. Extract the folder from the zip file
 4. Single click the address bar of the extracted folder in the file explorer and enter ```cmd``` to access the command prompt
-5. Install all the required packages by entering ```python3.7 pip install -r requirements.txt``` or  ```python(your version) pip install -r requirements.txt``` in the command prompt
-6. Lastly, enter ```python main.py``` in the command prompt to run the program.
+5. Install all the required packages by entering ```py -3.7 -m pip install -r requirements.txt``` or in the command prompt
+6. Lastly, enter ```py -3.7 main.py``` in the command prompt to run the program.
 
 ---
 
