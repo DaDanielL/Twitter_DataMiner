@@ -16,11 +16,16 @@ Intensity (a value ranging from 0 to 1) represents how much the word influences 
 
 Getting Started:
 1. [Install Python (MUST BE 3.7 or older)](https://www.python.org/downloads/)
-2. [Download Source Code (zip)](https://github.com/DaDanielL/Twitter_DataMiner/releases)
-3. Extract the folder from the zip file
-4. Single click the address bar of the extracted folder in the file explorer and enter ```cmd``` to access the command prompt
-5. Install all the required packages by entering ```py -3.7 -m pip install -r requirements.txt``` or in the command prompt
-6. Lastly, enter ```py -3.7 main.py``` in the command prompt to run the program.
+2. In the python installer, make sure 'Add Python 3.7 to PATH' is checked, and choose customize intallation.
+3. In the Optional Features menu, make sure 'pip' is checked.
+4. [Download Source Code (zip)](https://github.com/DaDanielL/Twitter_DataMiner/releases)
+5. Extract the folder from the zip file
+6. Single click the address bar of the extracted folder in the file explorer and enter ```cmd``` to access the command prompt
+
+![Guide](/demo/Animation.gif)
+
+6. Install all the required packages by entering ```py -3.7 -m pip install -r requirements.txt``` or in the command prompt
+7. Lastly, enter ```py -3.7 main.py``` in the command prompt to run the program.
 
 ---
 
