@@ -15,7 +15,7 @@ Intensity (a value ranging from 0 to 1) represents how much the word influences 
 ---
 
 Getting Started:
-1. [Install Python (MUST BE 3.7 or older)](https://www.python.org/downloads/)
+1. [Install Python (MUST BE 3.7 or older)](https://www.python.org/downloads/release/python-377/)
 2. In the python installer, make sure 'Add Python 3.7 to PATH' is checked, and choose customize intallation.
 3. In the Optional Features menu, make sure 'pip' is checked.
 4. [Download Source Code (zip)](https://github.com/DaDanielL/Twitter_DataMiner/releases)
